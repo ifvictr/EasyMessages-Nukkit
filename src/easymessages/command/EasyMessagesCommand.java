@@ -17,11 +17,12 @@ public class EasyMessagesCommand extends Command{
         this.plugin = plugin;
     }
     private void sendCommandHelp(CommandSender sender){
-        HashMap<String, String> commands = new HashMap<>();
-        commands.put("help", "Shows all EasyMessages commands");
-        commands.put("message", "Sends a message");
-        commands.put("motd", "Sets the server motd");
-        commands.put("popup", "Sends a popup");
+        HashMap<String, String> commands = new HashMap<String, String>(){{
+            put("help", "Shows all EasyMessages commands");
+            put("message", "Sends a message");
+            put("motd", "Sets the server motd");
+            put("popup", "Sends a popup");
+        }};
         sender.sendMessage("EasyMessages commands:");
         for(String name : commands.keySet()){
             sender.sendMessage("/easymessages "+name+": "+commands.get(name));

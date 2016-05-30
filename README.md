@@ -21,5 +21,5 @@ Main command: **easymessages**, **em**
 ###Releases:
 |Version|Release Date|Download|
 |:-------:|------------|:--------:|
-|1.0.0|?|unavailable|
+|1.0.0|May 30, 2016|[available](http://forums.nukkit.cn/resources/easymessages.70/download?version=126)|
 |1.1.0|?|unavailable|

@@ -10,7 +10,7 @@ import easymessages.task.UpdateMotdTask;
 import easymessages.utils.Utils;
 
 public class EasyMessages extends PluginBase{
-    private String scrollingPopup = "";
+    private String scrollingPopup;
     @Override
     public void onEnable(){
         this.saveDefaultConfig();
@@ -28,6 +28,7 @@ public class EasyMessages extends PluginBase{
         else{
             this.getServer().getNetwork().setName(this.getConfig().getSection("motd").getString("staticMotd"));
         }
+        this.setScrollingPopup(this.getConfig().getSection("popup").getString("scrollingMessage"));
     }
     public void broadcastPopup(String message){
         for(Player player : this.getServer().getOnlinePlayers().values()){
