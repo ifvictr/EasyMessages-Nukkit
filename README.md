@@ -22,3 +22,4 @@ Main command: **easymessages**, **em**
 |Version|Release Date|Download|
 |:-------:|------------|:--------:|
 |1.0.0|?|unavailable|
+|1.1.0|?|unavailable|
