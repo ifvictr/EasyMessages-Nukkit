@@ -14,7 +14,7 @@ public class EasyMessagesListener implements Listener{
     }
     @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerChat(PlayerChatEvent event){
-        if(!this.plugin.getConfig().getSection("chat").getBoolean("color", true) && !event.getPlayer().hasPermission("easymessages.action.color")){
+        if(!plugin.getConfig().getSection("chat").getBoolean("color", true) && !event.getPlayer().hasPermission("easymessages.action.color")){
             event.setMessage(Utils.replaceSymbols(event.getMessage(), true));
         }
     }

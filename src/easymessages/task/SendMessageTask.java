@@ -12,6 +12,6 @@ public class SendMessageTask extends PluginTask<EasyMessages>{
     }
     @Override
     public void onRun(int currentTick){
-        this.plugin.getServer().broadcastMessage(Utils.getRandom(this.plugin.getConfig().getSection("message").getStringList("messages")));
+        plugin.getServer().broadcastMessage(Utils.getRandom(plugin.getConfig().getSection("message").getStringList("messages")));
     }
 }

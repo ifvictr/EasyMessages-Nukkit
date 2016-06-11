@@ -13,30 +13,30 @@ public class EasyMessages extends PluginBase{
     private String scrollingPopup;
     @Override
     public void onEnable(){
-        this.saveDefaultConfig();
-        this.saveResource("values.txt");
-    	this.getServer().getCommandMap().register("easymessages", new EasyMessagesCommand(this));
-    	this.getServer().getPluginManager().registerEvents(new EasyMessagesListener(this), this);
-        if(this.getConfig().getSection("message").getBoolean("autoBroadcast")){
-            this.getServer().getScheduler().scheduleRepeatingTask(new SendMessageTask(this), (this.getConfig().getSection("message").getInt("interval") * 20));
+        saveDefaultConfig();
+        saveResource("values.txt");
+    	getServer().getCommandMap().register("easymessages", new EasyMessagesCommand(this));
+    	getServer().getPluginManager().registerEvents(new EasyMessagesListener(this), this);
+        if(getConfig().getSection("message").getBoolean("autoBroadcast")){
+            getServer().getScheduler().scheduleRepeatingTask(new SendMessageTask(this), (getConfig().getSection("message").getInt("interval") * 20));
         }
-        String pType = this.getConfig().getSection("popup").getString("displayType");
-        this.getServer().getScheduler().scheduleRepeatingTask(new SendPopupTask(this, pType), Utils.getInterval(pType, this.getConfig().getSection("popup").getInt("interval")));
-        if(this.getConfig().getSection("motd").getString("displayType").equalsIgnoreCase("dynamic")){
-            this.getServer().getScheduler().scheduleRepeatingTask(new UpdateMotdTask(this), (this.getConfig().getSection("motd").getInt("interval") * 20));
+        String pType = getConfig().getSection("popup").getString("displayType");
+        getServer().getScheduler().scheduleRepeatingTask(new SendPopupTask(this, pType), Utils.getInterval(pType, getConfig().getSection("popup").getInt("interval")));
+        if(getConfig().getSection("motd").getString("displayType").equalsIgnoreCase("dynamic")){
+            getServer().getScheduler().scheduleRepeatingTask(new UpdateMotdTask(this), (getConfig().getSection("motd").getInt("interval") * 20));
         }
         else{
-            this.getServer().getNetwork().setName(this.getConfig().getSection("motd").getString("staticMotd"));
+            getServer().getNetwork().setName(getConfig().getSection("motd").getString("staticMotd"));
         }
-        this.setScrollingPopup(this.getConfig().getSection("popup").getString("scrollingMessage"));
+        setScrollingPopup(getConfig().getSection("popup").getString("scrollingMessage"));
     }
     public void broadcastPopup(String message){
-        for(Player player : this.getServer().getOnlinePlayers().values()){
+        for(Player player : getServer().getOnlinePlayers().values()){
             player.sendPopup(message);
         }
     }
     public String getScrollingPopup(){
-        return this.scrollingPopup;
+        return scrollingPopup;
     }
     public void setScrollingPopup(String message){
         this.scrollingPopup = message;

@@ -14,25 +14,25 @@ public class SendPopupTask extends PluginTask<EasyMessages>{
     }
     @Override
     public void onRun(int currentTick){
-        switch(this.type){
+        switch(type){
             case "auto":
-                this.plugin.broadcastPopup(Utils.getRandom(this.plugin.getConfig().getSection("popup").getStringList("autoMessages")));
+                plugin.broadcastPopup(Utils.getRandom(plugin.getConfig().getSection("popup").getStringList("autoMessages")));
                 break;
             case "blinking":
-                this.plugin.broadcastPopup(this.plugin.getConfig().getSection("popup").getString("blinkingMessage"));
+                plugin.broadcastPopup(plugin.getConfig().getSection("popup").getString("blinkingMessage"));
                 break;
             case "infinite":
-                this.plugin.broadcastPopup(this.plugin.getConfig().getSection("popup").getString("infiniteMessage"));
+                plugin.broadcastPopup(plugin.getConfig().getSection("popup").getString("infiniteMessage"));
                 break;
             case "scrolling":
-                String popup = this.plugin.getScrollingPopup();
-                this.plugin.broadcastPopup(popup);
-                this.plugin.setScrollingPopup(Utils.next(popup));
+                String popup = plugin.getScrollingPopup();
+                plugin.broadcastPopup(popup);
+                plugin.setScrollingPopup(Utils.next(popup));
                 break;
             default:
                 //For some reason the task doesn't cancel, I'll comment out the log message to prevent console spam
-                //this.plugin.getServer().getLogger().notice("Invalid type set in popup.displayType, stopping task...");
-                this.plugin.getServer().getScheduler().cancelTask(this.getTaskId());
+                //plugin.getServer().getLogger().notice("Invalid type set in popup.displayType, stopping task...");
+                plugin.getServer().getScheduler().cancelTask(getTaskId());
                 break;
         }
     }

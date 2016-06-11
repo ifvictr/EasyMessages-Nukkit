@@ -13,7 +13,7 @@ public class EasyMessagesCommand extends Command{
     private EasyMessages plugin;
     public EasyMessagesCommand(EasyMessages plugin){
         super("easymessages", "Shows all EasyMessages commands", null, new String[]{"em"});
-        this.setPermission("easymessages.command.easymessages");
+        setPermission("easymessages.command.easymessages");
         this.plugin = plugin;
     }
     private void sendCommandHelp(CommandSender sender){
@@ -30,13 +30,13 @@ public class EasyMessagesCommand extends Command{
     }
     @Override
     public boolean execute(CommandSender sender, String label, String[] args){
-        if(!this.testPermission(sender)){
+        if(!testPermission(sender)){
             return false;
         }
         if(args.length > 0){
             switch(args[0].toLowerCase()){
                 case "help":
-                    this.sendCommandHelp(sender);
+                    sendCommandHelp(sender);
                     break;
                 case "m":
                 case "message":
@@ -74,7 +74,7 @@ public class EasyMessagesCommand extends Command{
                     if(args.length > 1){
                         String popup = Utils.replaceSymbols(String.join(" ", Arrays.copyOfRange(args, 2, args.length)));
                         if(args[1].equalsIgnoreCase("@all")){
-                            this.plugin.broadcastPopup(popup);
+                            plugin.broadcastPopup(popup);
                             sender.sendMessage(TextFormat.GREEN+"Sent popup to @all.");
                         }
                         else if(sender.getServer().getPlayer(args[1]) != null){
@@ -96,7 +96,7 @@ public class EasyMessagesCommand extends Command{
             }
         }
         else{
-            this.sendCommandHelp(sender);
+            sendCommandHelp(sender);
             return false;
         }
         return true;
